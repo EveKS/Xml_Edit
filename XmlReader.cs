@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using Xml2CSharp;
 
 namespace Xml_To_Excel
 {
@@ -24,7 +23,7 @@ namespace Xml_To_Excel
                 .EnumerateFiles("*.xml", SearchOption.AllDirectories)
                 .Select(fi =>
                 {
-                    XmlSerializer formatter = new XmlSerializer(typeof(Bill));
+                    XmlSerializer formatter = new XmlSerializer(typeof(Test));
                     string tmp = string.Empty;
                     using (StreamReader sr = new StreamReader(fi.FullName, enc))
                     {
@@ -32,7 +31,7 @@ namespace Xml_To_Excel
                     }
 
                     XmlDocument xDoc = new XmlDocument();
-                    xDoc.LoadXml(tmp.Replace("\x0c", ""));
+                    xDoc.LoadXml(tmp);
                     return DeserializeFromXmlDocument(xDoc).Result;
                 });
         });
