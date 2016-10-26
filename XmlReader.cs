@@ -32,7 +32,7 @@ namespace Xml_To_Excel
                     }
 
                     XmlDocument xDoc = new XmlDocument();
-                    xDoc.LoadXml(tmp.Replace("\x0c", ""));
+                    xDoc.LoadXml(tmp);
                     return DeserializeFromXmlDocument(xDoc).Result;
                 });
         });
